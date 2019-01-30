@@ -10,10 +10,28 @@ const listUL = listDiv.querySelector('ul');
 
 listUL.addEventListener('click', (event) => {
   if (event.target.tagName == 'BUTTON') {
-   let li = event.target.parentNode;
-   let ul = li.parentNode;
-   ul.removeChild(li);
-  }
+    if(event.target.className == 'remove'){
+     let li = event.target.parentNode;
+     let ul = li.parentNode;
+     ul.removeChild(li);
+   }
+   if(event.target.className == 'up'){
+     let li = event.target.parentNode;
+     let previLi = li.previousElementSibling;
+     let ul = li.parentNode;
+     if (previLi) {
+      ul.insertBefore(li, previLi);
+     }
+   }
+    if(event.target.className == 'down'){
+     let li = event.target.parentNode;
+     let nextLi = li.nextElementSibling;
+     let ul = li.parentNode;
+     if (nextLi) {
+     ul.insertBefore(nextLi, li);
+   }
+   }
+ }
 });
 
 
